@@ -1,0 +1,246 @@
+/************ Default Css ************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 75px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-weight: 400;
+  overflow-x: hidden;
+  position: relative;
+  background-color: #121212 !important;
+  color: #fff !important;
+  font-family: 'Centra', sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+}
+
+p, a, li, button, ul {
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+button {
+  border: 0;
+  background-color: transparent;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+}
+
+@media (min-width:1700px) {
+	main .container {
+		max-width: 100%;
+		padding: 0 150px;
+	}
+}
+
+.dashboard {
+  height: 100%;
+  width: 100%;
+}
+.sidebar {
+  margin: 4%;
+  border-radius: 2%;
+  background-color: #282828;
+  height: 90vh;
+  width: 300px;
+}
+
+.sidebarList {
+  position: relative;
+  top: 40%;
+  height: auto;
+  padding: 0;
+  width: 100%;
+}
+
+.sidebarList .row {
+  width: 100%;
+  height: 50px;
+  font-size: 1.2em;
+  list-style-type: none;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.row .icon {
+  flex: 30%;
+  display: grid;
+  place-items: center;
+}
+
+.row .title {
+  flex: 70%;
+}
+
+.sidebarList .row:hover {
+  cursor: pointer;
+  background-color: #383838;
+}
+
+.logout-button {
+  position: relative;
+  width: 100%;
+  top: 57%;
+  margin-left: 0;
+  background-color: #282828;
+  border: none;
+  outline: none;
+  color: aliceblue;
+}
+
+/**********TaskList*********************/
+.task-container {
+  display: grid;
+  place-items: center;
+  background-color: aqua;
+}
+
+/************ Login Page ************/
+
+.login-title {
+  font-weight: 700;
+  color: #3cceff;
+  position: fixed;
+  padding: 18px 0;
+  left: 47%;
+  top: 45px;
+}
+
+.login-box {
+  position: relative;
+  width: 380px;
+  height: 420px;
+  background: #2a2a2a;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.login-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 380px;
+  height: 420px;
+  background: linear-gradient(0deg, transparent,
+  #45f3ff, #45f3ff);
+   transform-origin: bottom right;
+  animation: animate 6s linear infinite;
+}
+.login-box::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 380px;
+  height: 420px;
+  background: linear-gradient(0deg, transparent,
+  #45f3ff, #45f3ff);
+   transform-origin: bottom right;
+  animation: animate 6s linear infinite;
+  animation-delay: -3s;
+}
+@keyframes animate {
+  0%
+  {
+    transform: rotate(0deg);
+  }
+  100%
+  {
+    transform: rotate(360deg)
+  }
+}
+.login-form {
+  position: absolute;
+  inset: 2px;
+  border-radius: 8px;
+  background: #28292d;
+  z-index: 10;
+}
+.login-form {
+  position: absolute;
+  inset: 2px;
+  border-radius: 8px;
+  background: #28292d;
+  z-index: 10;
+  padding: 80px 40px;
+  display: flex;
+  flex-direction: column;
+}
+.login-form h2 {
+  color: #45f3ff;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+.login-input {
+  position: relative;
+  height: 40px;
+  width: 300px;
+  margin-top: 0px;
+}
+.login-input input {
+  margin-top: 0px;
+  position: relative;
+  width: 100%;
+  padding: 20px 10px 10px;
+  background: #23242a;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  letter-spacing: 0.05em;
+}
+.login-button[type="submit"] {
+  position: relative;
+  border: none;
+  outline: none;
+  background: #45f3ff;
+  padding: 11px 25px;
+  width: 100px;
+  margin-top: 10px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.register-button[type="submit"] {
+  position: relative;
+  left: 32.8%;
+  border: none;
+  outline: none;
+  background: #45f3ff;
+  padding: 11px 25px;
+  width: 100px;
+  margin-top: 10px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+}
