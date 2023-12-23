@@ -12,33 +12,38 @@ function LoginPage(props) {
         setPassword(event.target.value);
     };
 
-    const handleSubmit = async event => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         console.log('submitted:', { username, password });
-
-        const reqBody = {"username": username, "password": password};
+      
+        const reqBody = { username, password };
         const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(reqBody)
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(reqBody),
         };
-        
-
-        await fetch('http://localhost:8000/auth/login', requestOptions).then((res) => {
-            if (res.status === 200) {
-                return Promise.all([res, res.headers]);
+      
+        try {
+          const response = await fetch('http://localhost:8000/auth/login', requestOptions);
+      
+          if (response.ok) {
+            const data = await response.json();
+      
+            if (data.jwt) {
+              localStorage.setItem('jwt', data.jwt);
+              localStorage.setItem('teacher_name', data.teacherUsername);
+              window.location.href = 'http://localhost:3000/dashboard';
             } else {
-                return Promise.reject("Invalid username or password");
+              throw new Error('JWT not present in the response');
             }
-        })
-        .then((data) => {
-            const { jwt, students } = data;
-            localStorage.setItem('jwt', jwt);
-            localStorage.setItem('student_list', JSON.stringify(students));
-            window.location.href = "http://localhost:3000/dashboard";
-        })
-        .catch((message) => alert(message));
-    }
+          } else {
+            throw new Error('Invalid username or password');
+          }
+        } catch (error) {
+          console.error('Login error:', error);
+          alert('Login failed. Please check your credentials.');
+        }
+      };
 
     const redirect = async event => {
         window.location.href = "http://localhost:3000/register"
