@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import LoginFilter from "../services/LoginFilter";
 
 function LoginPage(props) {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [feild1, setUsername] = useState('');
+    const [feild2, setPassword] = useState('');
 
     const handleUsernameChange = event => {
         setUsername(event.target.value);
@@ -12,38 +13,51 @@ function LoginPage(props) {
         setPassword(event.target.value);
     };
 
+    // const handleSubmit = async (event) => {
+    //     event.preventDefault();
+    //     console.log('submitted:', { username, password });
+      
+    //     const reqBody = { username, password };
+    //     const requestOptions = {
+    //       method: 'POST',
+    //       headers: { 'Content-Type': 'application/json' },
+    //       body: JSON.stringify(reqBody),
+    //     };
+      
+    //     try {
+    //       const response = await fetch('http://localhost:8000/auth/login', requestOptions);
+      
+    //       if (response.ok) {
+    //         const data = await response.json();
+      
+    //         if (data.jwt) {
+    //           localStorage.setItem('jwt', data.jwt);
+    //           localStorage.setItem('teacher_name', data.teacherUsername);
+    //           window.location.href = 'http://localhost:3000/dashboard';
+    //         } else {
+    //           throw new Error('JWT not present in the response');
+    //         }
+    //       } else {
+    //         throw new Error('Invalid username or password');
+    //       }
+    //     } catch (error) {
+    //       console.error('Login error:', error);
+    //       alert('Login failed. Please check your credentials.');
+    //     }
+    //   };
+
     const handleSubmit = async (event) => {
-        event.preventDefault();
-        console.log('submitted:', { username, password });
-      
-        const reqBody = { username, password };
-        const requestOptions = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(reqBody),
-        };
-      
-        try {
-          const response = await fetch('http://localhost:8000/auth/login', requestOptions);
-      
-          if (response.ok) {
-            const data = await response.json();
-      
-            if (data.jwt) {
-              localStorage.setItem('jwt', data.jwt);
-              localStorage.setItem('teacher_name', data.teacherUsername);
-              window.location.href = 'http://localhost:3000/dashboard';
-            } else {
-              throw new Error('JWT not present in the response');
-            }
-          } else {
-            throw new Error('Invalid username or password');
-          }
-        } catch (error) {
-          console.error('Login error:', error);
-          alert('Login failed. Please check your credentials.');
-        }
-      };
+      event.preventDefault();
+      console.log('submitted:', { feild1, feild2 });
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const loginData = {feild1, feild2};
+
+      if (emailRegex.test(loginData.feild1)){
+        LoginFilter.emailLogin(loginData);
+      } else {
+        LoginFilter.usernameLogin(loginData);
+      }
+    } 
 
     const redirect = async event => {
         window.location.href = "http://localhost:3000/register"
@@ -60,13 +74,13 @@ function LoginPage(props) {
                         <form>
                             <h2>Login</h2>
                             <label className="login-input">
-                                Username:
-                                <input type="text" required="required" value={username} onChange={handleUsernameChange} />
+                                Username or Email:
+                                <input type="text" required="required" value={feild1} onChange={handleUsernameChange} />
                             </label>
                                 <br />
                             <label className="login-input">
                                 Password:
-                                <input type="password" required="required" value={password} onChange={handlePasswordChange} />
+                                <input type="password" required="required" value={feild2} onChange={handlePasswordChange} />
                             </label>
                                 <br />
                             <button className="login-button" type="submit" onClick={handleSubmit}>Login</button>
