@@ -1,4 +1,4 @@
-CURRENTLY UNAVAILABLE due to changes in the HTTP endpoints in the backend service.
+Password Reset is currently Unavailable in the frontend yet can be used in the backend.
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
