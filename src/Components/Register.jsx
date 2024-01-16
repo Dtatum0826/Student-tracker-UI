@@ -2,7 +2,9 @@ import React, { useState } from "react";
 
 function RegisterPage(props) {
     const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     const handleUsernameChange = event => {
         setUsername(event.target.value);
@@ -12,11 +14,18 @@ function RegisterPage(props) {
         setPassword(event.target.value);
     };
 
+    const handleEmailChange = event => {
+        setEmail(event.target.value);
+    }
+
     const handleSubmit = async event => {
         event.preventDefault();
-        console.log('submitted:', { username, password });
-
-        const reqBody = {username, password};
+        console.log('submitted:', { username, email, password });
+        if (!emailRegex.test(email)){
+            alert('Invalid email address')
+            return;
+        }
+        const reqBody = {username, email, password};
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -55,6 +64,11 @@ function RegisterPage(props) {
                             <label className="login-input">
                                 Username:
                                 <input type="text" required="required" value={username} onChange={handleUsernameChange} />
+                            </label>
+                                <br />
+                                <label className="login-input">
+                                Email:
+                                <input type="text" required="required" value={email} onChange={handleEmailChange} />
                             </label>
                                 <br />
                             <label className="login-input">
