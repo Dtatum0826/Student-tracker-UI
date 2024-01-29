@@ -8,7 +8,7 @@ class StudentService {
         gradeToChange: editFormData.gradeToChange,
       };
   
-      const response = await fetch('http://localhost:8000/teacher/edit', {
+      const response = await fetch('http://localhost:5000/teacher/edit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ class StudentService {
 
   static async deleteStudent(token, studentId, students, setStudents) {
     try {
-      const response = await fetch(`http://localhost:8000/teacher/delete?studentId=${studentId}`, {
+      const response = await fetch(`http://localhost:5000/teacher/delete?studentId=${studentId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ class StudentService {
         grade: addStudentFormData.grade
       }
 
-      const response = await fetch('http://localhost:8000/teacher/add', {
+      const response = await fetch('http://localhost:5000/teacher/add', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

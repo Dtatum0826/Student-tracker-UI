@@ -6,6 +6,9 @@ import Login from './Components/Login';
 import Register from './Components/Register';
 import { isAuthenticated } from './utils/AuthService';
 import Dashboard from './Components/Dashboard';
+import EmailVerificationPage from './Components/EmailVerification';
+import PasswordReset from './Components/PasswordReset';
+
 const PrivateRoute = ({ element: Element, ...rest }) => {
   return (
     <Route
@@ -22,6 +25,8 @@ const App = () => {
       <Route path='/' element={<Login />} />
       <Route path='/register' element={<Register />} />
       <Route path='/dashboard' element={<Dashboard />} />
+      <Route path='/verify-email' element={<EmailVerificationPage />} />
+      <Route path='/password-reset' element={<PasswordReset />} />
     </Routes>
    </BrowserRouter>
   );

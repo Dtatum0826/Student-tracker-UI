@@ -33,7 +33,7 @@ function RegisterPage(props) {
         };
 
         try {
-            const response = await fetch('http://localhost:8000/auth/register', requestOptions);
+            const response = await fetch('http://localhost:5000/auth/register', requestOptions);
 
             if (response.ok) {
                 const data = await response.json();
@@ -48,7 +48,7 @@ function RegisterPage(props) {
             }
         } catch (error) {
             console.error('Login error:', error);
-            alert('Login failed. Please check your credentials.');
+            alert('Registration failed. Please try again.');
         }
     }
 
