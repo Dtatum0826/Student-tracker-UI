@@ -122,8 +122,15 @@ const Dashboard = () => {
     }));
   };
 
+  const handleEmailRedirect = () => {
+    window.location.href = 'http://localhost:3000/verify-email';
+  };
+
   return (
     <div>
+      <div>
+        <button onClick={handleEmailRedirect}>email verification</button>
+      </div>
       <div>
         <button onClick={HandleLogout}>Logout</button>
       </div>
