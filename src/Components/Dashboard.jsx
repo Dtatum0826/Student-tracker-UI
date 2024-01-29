@@ -22,7 +22,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchStudents = async () => {
   try {
-    const response = await fetch('http://localhost:8000/teacher/all', {
+    const response = await fetch('http://localhost:3000/teacher/all', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

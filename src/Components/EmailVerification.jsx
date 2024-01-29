@@ -17,7 +17,7 @@ const EmailVerificationPage = () => {
 
     const handleVerifyEmail = async () => {
         try {
-            const response = await fetch(`http://localhost:8000/auth/verify/email?token=${token}`);
+            const response = await fetch(`http://localhost:5000/auth/verify/email?token=${token}`);
             if (response.ok) {
                 navigate('/dashboard');
             } else {
@@ -34,7 +34,7 @@ const EmailVerificationPage = () => {
 
     const handleResendVerification = async () => {
         try {
-            const response = await fetch(`http://localhost:8000/auth/verify/send?email=${email}`);
+            const response = await fetch(`http://localhost:5000/auth/verify/send?email=${email}`);
             if (response.ok) {
                 console.log('Verification link resent successfully.');
             } else {

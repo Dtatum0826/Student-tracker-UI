@@ -12,7 +12,7 @@ class LoginFilter {
         };
       
         try {
-          const response = await fetch('http://localhost:8000/auth/login/email', requestOptions);
+          const response = await fetch('http://localhost:5000/auth/login/email', requestOptions);
       
           if (response.ok) {
             const data = await response.json();
@@ -45,7 +45,7 @@ class LoginFilter {
         };
       
         try {
-          const response = await fetch('http://localhost:8000/auth/login/basic', requestOptions);
+          const response = await fetch('http://localhost:5000/auth/login/basic', requestOptions);
       
           if (response.ok) {
             const data = await response.json();
