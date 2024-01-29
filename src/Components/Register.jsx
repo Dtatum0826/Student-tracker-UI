@@ -48,7 +48,7 @@ function RegisterPage(props) {
             }
         } catch (error) {
             console.error('Login error:', error);
-            alert('Login failed. Please check your credentials.');
+            alert('Registration failed. Please try again.');
         }
     }
 
