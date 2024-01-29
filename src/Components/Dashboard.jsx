@@ -22,7 +22,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchStudents = async () => {
   try {
-    const response = await fetch('http://localhost:3000/teacher/all', {
+    const response = await fetch('http://localhost:5000/teacher/all', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -127,15 +127,15 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
+    <div className="dashboard-container">
       <div>
-        <button onClick={handleEmailRedirect}>email verification</button>
+        <button className='email-button' onClick={handleEmailRedirect}>email verification</button>
       </div>
       <div>
-        <button onClick={HandleLogout}>Logout</button>
+        <button className='logout-button' onClick={HandleLogout}>Logout</button>
       </div>
       <div>
-        <button onClick={handleAddStudentFormToggle}>Add Student</button>
+        <button className='add-button' onClick={handleAddStudentFormToggle}>Add Student</button>
       </div>
       {addNewStudentFormVisible && (
         <div className="add-student-form">
@@ -173,8 +173,8 @@ const Dashboard = () => {
               required
             />
           </label>
-          <button onClick={handleAddStudent}>Submit</button>
-          <button onClick={handleAddStudentFormClose}>Close</button>
+          <button className='add-button' onClick={handleAddStudent}>Submit</button>
+          <button className='close-add-button' onClick={handleAddStudentFormClose}>Close</button>
         </div>
       )}
       <h2>Welcome {localStorage.getItem('teacher_name')}</h2>
@@ -195,8 +195,8 @@ const Dashboard = () => {
               <td>{student.period}</td>
               <td>{student.grade}</td>
               <td>
-                <button onClick={() => handleEdit(student)}>Edit</button>
-                <button onClick={() => handleDelete(student.studentId)}>Delete</button>
+                <button className='edit-button' onClick={() => handleEdit(student)}>Edit</button>
+                <button className='delete-button' onClick={() => handleDelete(student.studentId)}>Delete</button>
               </td>
             </tr>
           ))}
@@ -236,8 +236,8 @@ const Dashboard = () => {
               pattern="\d*\.?\d*"
             />
           </label>
-          <button onClick={handleEditSubmit}>Submit</button>
-          <button onClick={handleFormClose}>Close</button>
+          <button className='edit-button' onClick={handleEditSubmit}>Submit</button>
+          <button className='submit-button' onClick={handleFormClose}>Close</button>
         </div>
       )}
     </div>
