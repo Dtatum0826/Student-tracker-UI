@@ -13,39 +13,6 @@ function LoginPage(props) {
         setPassword(event.target.value);
     };
 
-    // const handleSubmit = async (event) => {
-    //     event.preventDefault();
-    //     console.log('submitted:', { username, password });
-      
-    //     const reqBody = { username, password };
-    //     const requestOptions = {
-    //       method: 'POST',
-    //       headers: { 'Content-Type': 'application/json' },
-    //       body: JSON.stringify(reqBody),
-    //     };
-      
-    //     try {
-    //       const response = await fetch('http://localhost:8000/auth/login', requestOptions);
-      
-    //       if (response.ok) {
-    //         const data = await response.json();
-      
-    //         if (data.jwt) {
-    //           localStorage.setItem('jwt', data.jwt);
-    //           localStorage.setItem('teacher_name', data.teacherUsername);
-    //           window.location.href = 'http://localhost:3000/dashboard';
-    //         } else {
-    //           throw new Error('JWT not present in the response');
-    //         }
-    //       } else {
-    //         throw new Error('Invalid username or password');
-    //       }
-    //     } catch (error) {
-    //       console.error('Login error:', error);
-    //       alert('Login failed. Please check your credentials.');
-    //     }
-    //   };
-
     const handleSubmit = async (event) => {
       event.preventDefault();
       console.log('submitted:', { feild1, feild2 });
@@ -61,6 +28,10 @@ function LoginPage(props) {
 
     const redirect = async event => {
         window.location.href = "http://localhost:3000/register"
+    }
+
+    const redirectToPasswordReset = async event => {
+        window.location.href = "http://localhost:3000/password-reset"
     }
 
 
@@ -85,6 +56,7 @@ function LoginPage(props) {
                                 <br />
                             <button className="login-button" type="submit" onClick={handleSubmit}>Login</button>
                             <button className="register-button" type="submit" onClick={redirect}>Register</button>
+                            <button className="password-reset-button" type="submit" onClick={redirectToPasswordReset}>Forgot Password?</button>
                         </form>
                     </div>    
                 </div>
