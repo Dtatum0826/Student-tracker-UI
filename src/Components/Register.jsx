@@ -33,7 +33,7 @@ function RegisterPage(props) {
         };
 
         try {
-            const response = await fetch('http://' + process.env.REACT_APP_ENDPOINT + ':5000/auth/register', requestOptions);
+            const response = await fetch(process.env.REACT_APP_ENDPOINT + '/auth/register', requestOptions);
 
             if (response.ok) {
                 const data = await response.json();

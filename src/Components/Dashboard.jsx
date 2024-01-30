@@ -22,7 +22,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchStudents = async () => {
   try {
-    const response = await fetch('http://' +  process.env.REACT_APP_ENDPOINT + ':5000/teacher/all', {
+    const response = await fetch(process.env.REACT_APP_ENDPOINT + '/teacher/all', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
