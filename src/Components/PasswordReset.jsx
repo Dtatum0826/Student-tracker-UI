@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 
 const PasswordReset = () => {
@@ -8,7 +7,6 @@ const PasswordReset = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [passwordsMatch, setPasswordsMatch] = useState(true);
     const [showStep2, setShowStep2] = useState(false);
-    const navigate = useNavigate();
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -26,7 +24,7 @@ const PasswordReset = () => {
 
     const handleIntiatePasswordReset = async () => {
         try {
-                const response = await fetch('http://localhost:5000/auth/initiate-reset?email=' + email);
+                const response = await fetch('http://' + process.env.REACT_APP_ENPOINT + ':5000/auth/initiate-reset?email=' + email);
                 if (response.ok) {
                     console.log('Password reset initiated successfully.');
                     setShowStep2(true);
@@ -40,7 +38,7 @@ const PasswordReset = () => {
 
     const handleResendVerification = async () => {
         try {
-          const response = await fetch(`http://localhost:5000/auth/initiate-reset?email=${email}`);
+          const response = await fetch(`http://${process.env.REACT_APP_ENDPOINT}:5000/auth/initiate-reset?email=${email}`);
           if (response.ok) {
             console.log('Password reset initiated successfully.');
           } else {
