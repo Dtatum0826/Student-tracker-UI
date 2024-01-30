@@ -46,18 +46,18 @@ const EmailVerificationPage = () => {
     };
 
     return (
-        <div>
-        <h1>Email Verification</h1>
-        <label>
-            Email:
-            <input type="text" value={email} onChange={handleEmailChange} />
-        </label>
-        <label>
-            Token:
-            <input type="text" value={token} onChange={handleTokenChange} />
-        </label>
-        <button onClick={handleVerifyEmail}>Verify Email</button>
-        <button onClick={handleResendVerification}>Resend Verification Link</button>
+        <div className="email-container">
+            <h1>Email Verification</h1>
+            <label>
+                Email:
+                <input type="text" value={email} onChange={handleEmailChange} />
+            </label>
+            <label>
+                Token:
+                <input type="text" value={token} onChange={handleTokenChange} />
+            </label>
+            <button onClick={handleVerifyEmail}>Verify Email</button>
+            <button onClick={handleResendVerification}>Resend Verification Link</button>
         </div>
     );
 };

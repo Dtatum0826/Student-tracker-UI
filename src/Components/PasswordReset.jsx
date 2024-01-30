@@ -6,7 +6,7 @@ const PasswordReset = () => {
     const [token, setToken] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [passowrdsMatch, setPasswordsMatch] = useState(true);
+    const [passwordsMatch, setPasswordsMatch] = useState(true);
     const [showStep2, setShowStep2] = useState(false);
     const navigate = useNavigate();
 
@@ -61,7 +61,7 @@ const PasswordReset = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(reqBody),
         }
-        if (passowrdsMatch) {
+        if (passwordsMatch) {
             try {
                 const response = await fetch('http://localhost:5000/auth/reset-password', requestOptions);
                 if (response.ok) {
@@ -77,34 +77,34 @@ const PasswordReset = () => {
         }
     }
 
-      return (
-        <div>
-          <label>Email:
-            <input type="text" value={email} onChange={handleEmailChange} />
-          </label>
-          <button onClick={handleIntiatePasswordReset}>Initiate Password Reset</button>
+    return (
+      <div className="password-reset-container">
+        <label>Email:
+          <input type="text" value={email} onChange={handleEmailChange} />
+        </label>
+        <button onClick={handleIntiatePasswordReset}>Initiate Password Reset</button>
     
-          {showStep2 && (
-            <div>
-              {/* Step 2: Enter Verification Code and New Password */}
-              <label>Verification Code:
-                <input type="text" value={token} onChange={handleTokenChange} />
-              </label>
-              <label>Password:
-                <input type="password" value={password} onChange={handlePasswordChange} />
-              </label>
-              <label>Confirm Password:
-                <input type="password" value={confirmPassword} onChange={handleConfirmPasswordChange} />
-              </label>
-              {passowrdsMatch && <p>Passwords do not match</p>}
-              <button onClick={handlePasswordReset}>Reset Password</button>
+        {showStep2 && (
+          <div>
+            {/* Step 2: Enter Verification Code and New Password */}
+            <label>Verification Code:
+              <input type="text" value={token} onChange={handleTokenChange} />
+            </label>
+            <label>Password:
+              <input type="password" value={password} onChange={handlePasswordChange} />
+            </label>
+            <label>Confirm Password:
+              <input type="password" value={confirmPassword} onChange={handleConfirmPasswordChange} />
+            </label>
+            {passwordsMatch && <p>Passwords do not match</p>}
+            <button onClick={handlePasswordReset} className="reset-password-button">Reset Password</button>
     
-              {/* Button to resend verification code */}
-              <button onClick={handleResendVerification}>Resend Verification Code</button>
-            </div>
-          )}
-        </div>
-      );
+            {/* Button to resend verification code */}
+            <button onClick={handleResendVerification} className="resend-verification-button">Resend Verification Code</button>
+          </div>
+        )}
+      </div>
+    );
 }
 
 export default PasswordReset;
