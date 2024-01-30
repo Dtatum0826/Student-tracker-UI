@@ -24,7 +24,7 @@ const PasswordReset = () => {
 
     const handleIntiatePasswordReset = async () => {
         try {
-                const response = await fetch('http://' + process.env.REACT_APP_ENPOINT + ':5000/auth/initiate-reset?email=' + email);
+                const response = await fetch('http://' + process.env.REACT_APP_ENDPOINT + ':5000/auth/initiate-reset?email=' + email);
                 if (response.ok) {
                     console.log('Password reset initiated successfully.');
                     setShowStep2(true);
@@ -61,7 +61,7 @@ const PasswordReset = () => {
         }
         if (passwordsMatch) {
             try {
-                const response = await fetch('http://localhost:5000/auth/reset-password', requestOptions);
+                const response = await fetch('http://' + process.env.REACT_APP_ENDPOINT + ':5000/auth/reset-password', requestOptions);
                 if (response.ok) {
                     window.location.href = 'http://localhost:3000/';
                 } else {
