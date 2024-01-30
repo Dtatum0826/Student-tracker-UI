@@ -97,7 +97,7 @@ const Dashboard = () => {
   const HandleLogout = () => {
     localStorage.removeItem('jwt');
     localStorage.removeItem('teacher_name');
-    window.location.href = "http://localhost:3000/"
+    window.location.href = "/"
   }
 
   const handleAddStudent = async () => {
@@ -123,7 +123,7 @@ const Dashboard = () => {
   };
 
   const handleEmailRedirect = () => {
-    window.location.href = 'http://localhost:3000/verify-email';
+    window.location.href = '/verify-email';
   };
 
   return (

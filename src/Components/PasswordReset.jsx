@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 
 const PasswordReset = () => {
     const [email, setEmail] = useState('');
@@ -63,7 +64,7 @@ const PasswordReset = () => {
             try {
                 const response = await fetch(process.env.REACT_APP_ENDPOINT + '/auth/reset-password', requestOptions);
                 if (response.ok) {
-                    window.location.href = 'http://localhost:3000/';
+                  window.location.href = '/';
                 } else {
                     console.error('Failed to reset password.');
                 }

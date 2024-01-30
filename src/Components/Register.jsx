@@ -41,7 +41,7 @@ function RegisterPage(props) {
                 if (data.jwt) {
                     localStorage.setItem('jwt', data.jwt);
                     localStorage.setItem('teacher_name', data.teacherUsername);
-                    window.location.href = 'http://localhost:3000/dashboard';
+                    window.location.href = '/dashboard';
                   } else {
                     throw new Error('JWT not present in the response');
                   }

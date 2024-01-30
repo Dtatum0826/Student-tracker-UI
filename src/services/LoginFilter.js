@@ -1,4 +1,3 @@
-
 class LoginFilter {
 
     static async emailLogin(loginData) {
@@ -13,7 +12,7 @@ class LoginFilter {
         };
       
         try {
-          const response = await fetch(process.env.REACT_APP_ENDPOINT + '/auth/login/email', requestOptions);
+          const response = await fetch(process.env.REACT_APP_ENDPOINT + ':5000/auth/login/email', requestOptions);
       
           if (response.ok) {
             const data = await response.json();
@@ -21,7 +20,7 @@ class LoginFilter {
             if (data.jwt) {
               localStorage.setItem('jwt', data.jwt);
               localStorage.setItem('teacher_name', data.teacherUsername);
-              window.location.href = 'http://localhost:3000/dashboard';
+              window.location.href = '/dashboard';
             } else {
               throw new Error('JWT not present in the response');
             }
@@ -46,7 +45,7 @@ class LoginFilter {
         };
       
         try {
-          const response = await fetch(process.env.REACT_APP_ENDPOINT + '/auth/login/basic', requestOptions);
+          const response = await fetch(process.env.REACT_APP_ENDPOINT + ':5000/auth/login/basic', requestOptions);
       
           if (response.ok) {
             const data = await response.json();
@@ -54,7 +53,7 @@ class LoginFilter {
             if (data.jwt) {
               localStorage.setItem('jwt', data.jwt);
               localStorage.setItem('teacher_name', data.teacherUsername);
-              window.location.href = 'http://localhost:3000/dashboard';
+              window.location.href = '/dashboard';
             } else {
               throw new Error('JWT not present in the response');
             }

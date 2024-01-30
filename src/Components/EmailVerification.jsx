@@ -5,7 +5,6 @@ import { useNavigate, Navigate } from 'react-router-dom';
 const EmailVerificationPage = () => {
     const [email, setEmail] = useState('');
     const [token, setToken] = useState('');
-    const navigate = useNavigate();
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -19,7 +18,7 @@ const EmailVerificationPage = () => {
         try {
             const response = await fetch(`${process.env.REACT_APP_ENDPOINT}/auth/verify/email?token=${token}`);
             if (response.ok) {
-                navigate('/dashboard');
+                window.location.href = '/dashboard';
             } else {
                 console.error('Email verification failed.');
             }
@@ -29,7 +28,7 @@ const EmailVerificationPage = () => {
     };
 
     if (!isAuthenticated()) {
-        return <Navigate to="/" />;
+        window.location.href = '/';
     }
 
     const handleResendVerification = async () => {
