@@ -33,7 +33,7 @@ function RegisterPage(props) {
         };
 
         try {
-            const response = await fetch('http://' + process.env.REACT_APP_ENDPOINT + ':5000/auth/register', requestOptions);
+            const response = await fetch(process.env.REACT_APP_ENDPOINT + '/auth/register', requestOptions);
 
             if (response.ok) {
                 const data = await response.json();
@@ -41,7 +41,7 @@ function RegisterPage(props) {
                 if (data.jwt) {
                     localStorage.setItem('jwt', data.jwt);
                     localStorage.setItem('teacher_name', data.teacherUsername);
-                    window.location.href = 'http://localhost:3000/dashboard';
+                    window.location.href = '/dashboard';
                   } else {
                     throw new Error('JWT not present in the response');
                   }

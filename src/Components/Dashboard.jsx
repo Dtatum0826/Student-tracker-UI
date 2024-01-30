@@ -22,7 +22,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchStudents = async () => {
   try {
-    const response = await fetch('http://' +  process.env.REACT_APP_ENDPOINT + ':5000/teacher/all', {
+    const response = await fetch(process.env.REACT_APP_ENDPOINT + '/teacher/all', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ const Dashboard = () => {
   const HandleLogout = () => {
     localStorage.removeItem('jwt');
     localStorage.removeItem('teacher_name');
-    window.location.href = "http://localhost:3000/"
+    window.location.href = "/"
   }
 
   const handleAddStudent = async () => {
@@ -123,7 +123,7 @@ const Dashboard = () => {
   };
 
   const handleEmailRedirect = () => {
-    window.location.href = 'http://localhost:3000/verify-email';
+    window.location.href = '/verify-email';
   };
 
   return (
