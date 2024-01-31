@@ -45,7 +45,7 @@ class LoginFilter {
         };
       
         try {
-          const response = await fetch(process.env.REACT_APP_ENDPOINT + '/auth/login/basic', requestOptions);
+          const response = await fetch(process.env.REACT_APP_ENDPOINT + ':5000/auth/login/basic', requestOptions);
       
           if (response.ok) {
             const data = await response.json();
