@@ -20,7 +20,7 @@ const PrivateRoute = ({ element: Element, ...rest }) => {
 
 const App = () => {
   return (
-   <BrowserRouter>
+   <BrowserRouter basename='/'>
     <Routes>
       <Route path='/' element={<Login />} />
       <Route path='/register' element={<Register />} />
