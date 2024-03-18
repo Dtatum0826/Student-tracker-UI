@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import LoginFilter from "../services/LoginFilter";
+import { Navigate } from "react-router-dom";
 
 function LoginPage(props) {
     const [feild1, setUsername] = useState('');
@@ -27,11 +28,11 @@ function LoginPage(props) {
     } 
 
     const redirect = async event => {
-        window.location.href = "http://localhost:3000/register"
+        window.location.href = '/register';
     }
 
     const redirectToPasswordReset = async event => {
-        window.location.href = "http://localhost:3000/password-reset"
+        window.location.href = '/password-reset';
     }
 
 
