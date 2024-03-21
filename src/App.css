@@ -271,3 +271,20 @@ th, td {
 .resend-verification-button {
   margin-left: 10px; /* Adjust margin as needed */
 }
+
+/******** Assignments *********/
+.assignments-container button {
+  background-color: transparent;
+  border: 2px solid #007bff;
+  color: #007bff;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 150px; 
+  margin: 3px;
+}
+
+.assignments-container button:hover {
+  background-color: #007bff;
+  color: white;
+}
