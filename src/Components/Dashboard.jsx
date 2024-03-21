@@ -22,7 +22,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchStudents = async () => {
   try {
-    const response = await fetch(process.env.REACT_APP_ENDPOINT + '/teacher/all', {
+    const response = await fetch(process.env.REACT_APP_ENDPOINT + ':5000/teacher/all', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -126,16 +126,17 @@ const Dashboard = () => {
     window.location.href = '/verify-email';
   };
 
+  const handleAssignmentWindowChange = (studentId) => {
+    localStorage.setItem('student_id', studentId)
+    window.location.href = '/assignments';
+  }
+
   return (
     <div className="dashboard-container">
       <div>
         <button className='email-button' onClick={handleEmailRedirect}>email verification</button>
-      </div>
-      <div>
-        <button className='logout-button' onClick={HandleLogout}>Logout</button>
-      </div>
-      <div>
         <button className='add-button' onClick={handleAddStudentFormToggle}>Add Student</button>
+        <button className='logout-button' onClick={HandleLogout}>Logout</button>
       </div>
       {addNewStudentFormVisible && (
         <div className="add-student-form">
@@ -191,7 +192,7 @@ const Dashboard = () => {
         <tbody>
           {students.map((student) => (
             <tr key={student.studentId}>
-              <td>{student.name}</td>
+              <td><button onClick={() => handleAssignmentWindowChange(student.studentId)}>{student.name}</button></td>
               <td>{student.period}</td>
               <td>{student.grade}</td>
               <td>

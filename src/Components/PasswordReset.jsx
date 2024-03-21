@@ -20,26 +20,29 @@ const PasswordReset = () => {
     };
     const handleConfirmPasswordChange = (e) => {
         setConfirmPassword(e.target.value);
-        setPasswordsMatch(password === confirmPassword);
     };
 
     const handleIntiatePasswordReset = async () => {
+      if (password === confirmPassword) {
         try {
-                const response = await fetch(process.env.REACT_APP_ENDPOINT + '/auth/initiate-reset?email=' + email);
-                if (response.ok) {
-                    console.log('Password reset initiated successfully.');
-                    setShowStep2(true);
-                } else {
-                    console.error('Failed to initiate password reset.');
-                }
+          const response = await fetch(process.env.REACT_APP_ENDPOINT + ':5000/auth/initiate-reset?email=' + email);
+          if (response.ok) {
+              console.log('Password reset initiated successfully.');
+              setShowStep2(true);
+          } else {
+              console.error('Failed to initiate password reset.');
+          }
         } catch (error) {
             console.error('Error during password reset:', error);
         }
+      } else {
+        console.log('Passwords do not match.');
+      }
     }
 
     const handleResendVerification = async () => {
         try {
-          const response = await fetch(`${process.env.REACT_APP_ENDPOINT}/auth/initiate-reset?email=${email}`);
+          const response = await fetch(`${process.env.REACT_APP_ENDPOINT}:5000/auth/initiate-reset?email=${email}`);
           if (response.ok) {
             console.log('Password reset initiated successfully.');
           } else {
@@ -52,17 +55,17 @@ const PasswordReset = () => {
 
     const handlePasswordReset = async () => {
         const reqBody = {
-            password: password,
             token: token,
+            password: password,
         }
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(reqBody),
         }
-        if (passwordsMatch) {
+        if (password === confirmPassword) {
             try {
-                const response = await fetch(process.env.REACT_APP_ENDPOINT + '/auth/reset-password', requestOptions);
+                const response = await fetch(process.env.REACT_APP_ENDPOINT + ':5000/auth/reset-password', requestOptions);
                 if (response.ok) {
                   window.location.href = '/';
                 } else {
@@ -95,7 +98,7 @@ const PasswordReset = () => {
             <label>Confirm Password:
               <input type="password" value={confirmPassword} onChange={handleConfirmPasswordChange} />
             </label>
-            {passwordsMatch && <p>Passwords do not match</p>}
+            {password === confirmPassword && <p>Passwords do not match</p>}
             <button onClick={handlePasswordReset} className="reset-password-button">Reset Password</button>
     
             {/* Button to resend verification code */}
