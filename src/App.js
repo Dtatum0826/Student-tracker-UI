@@ -9,6 +9,7 @@ import Dashboard from './Components/Dashboard';
 import EmailVerificationPage from './Components/EmailVerification';
 import PasswordReset from './Components/PasswordReset';
 import Assignments from './Components/Assignments';
+import LandingPage from './Components/LandingPage';
 
 const PrivateRoute = ({ element: Element, ...rest }) => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
    <BrowserRouter basename='/'>
     <Routes>
       <Route path='/' element={<Login />} />
+      <Route path='/landing-page' element={<LandingPage />} />
       <Route path='/register' element={<Register />} />
       <Route path='/dashboard' element={<Dashboard />} />
       <Route path='/verify-email' element={<EmailVerificationPage />} />
