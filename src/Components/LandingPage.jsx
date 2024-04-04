@@ -1,17 +1,24 @@
 import React from 'react';
+import '../styles/LandingPage.css'
+
 
 const redirect = async event => {
   window.location.href = '/register';
 }
 const LandingPage = () => {
+
   return (
     <div>
       {/* Hero Section */}
-      <section className="hero">
-        <h1>Track Student Progress, Simplify Your Teaching</h1>
-        <p>An intuitive platform for organizing assignments, monitoring grades, and streamlining communication.</p>
-        <button className="btn-primary">Sign Up Now</button> 
-      </section>
+      
+<section className="hero">
+  <div className="hero-content">
+    <h1>Track Student Progress, Simplify Your Teaching</h1>
+    <p>An intuitive platform for organizing assignments, monitoring grades, and streamlining communication.</p>
+    <button className="register-button" onClick={redirect}>Sign Up Now</button>
+  </div>
+</section>
+     
 
       {/* Features Section */}
       <section className="features">
@@ -27,7 +34,7 @@ const LandingPage = () => {
       <section className="call-to-action">
         {/* Repeat button */}
       </section>
-      <button className="register-button" type="submit" onClick={redirect}>Register</button>
+      
     </div>
   );
 };
