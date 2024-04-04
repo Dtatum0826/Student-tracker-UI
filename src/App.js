@@ -11,6 +11,7 @@ import PasswordReset from './Components/PasswordReset';
 import Assignments from './Components/Assignments';
 import LandingPage from './Components/LandingPage';
 import Navbar from './common/Navbar';
+import Footer from './common/Footer';
 
 
 const PrivateRoute = ({ element: Element, ...rest }) => {
@@ -24,6 +25,7 @@ const PrivateRoute = ({ element: Element, ...rest }) => {
 
 const App = () => {
   return (
+    
    <BrowserRouter basename='/'>
     <Navbar/>
     <Routes>
@@ -35,7 +37,10 @@ const App = () => {
       <Route path='/password-reset' element={<PasswordReset />} />
       <Route path ='/assignments' element={<Assignments />} />
     </Routes>
+    <Footer />
    </BrowserRouter>
+    
+    
   );
 };
 

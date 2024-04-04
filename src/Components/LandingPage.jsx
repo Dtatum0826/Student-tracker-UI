@@ -1,5 +1,8 @@
 import React from 'react';
 import '../styles/LandingPage.css'
+import '../styles/Section.css'
+import Section from '../common/Section';
+import Card from '../common/Card';
 
 
 const redirect = async event => {
@@ -18,12 +21,27 @@ const LandingPage = () => {
     <button className="register-button" onClick={redirect}>Sign Up Now</button>
   </div>
 </section>
-     
+
 
       {/* Features Section */}
-      <section className="features">
-        {/* Feature 1, Feature 2, Feature 3... */}
-      </section>
+  <Section title="Features">
+  <Card 
+    title="Admin Dashboard"
+    description="Manage all aspects of your platform with our intuitive admin dashboard."
+    icon="/icons/dashboard.svg" // Update the path
+  />
+  <Card
+    title="Student Assignments"
+    description="Effortlessly assign tasks and track progress with our integrated assignment system."
+    icon="/icons/assignments.svg"
+  />
+  <Card
+    title="Feedback Board"
+    description="Collect feedback from teachers and students to continuously improve academic performance."
+    icon="/icons/feedback.svg" 
+  />
+</Section>
+
 
       {/* Testimonials Section (if desired) */}
       <section className="testimonials">
