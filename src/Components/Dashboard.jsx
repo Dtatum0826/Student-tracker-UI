@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import { isAuthenticated } from '../utils/AuthService';
 import StudentService from '../services/StudentService';
 
 const Dashboard = () => {
+  const navigate = useNavigate();
   const [students, setStudents] = useState([]);
   const [showEditForm, setShowEditForm] = useState(false);
   const [editFormData, setEditFormData] = useState({
@@ -97,7 +98,7 @@ const Dashboard = () => {
   const HandleLogout = () => {
     localStorage.removeItem('jwt');
     localStorage.removeItem('teacher_name');
-    window.location.href = "/"
+    navigate("/");
   }
 
   const handleAddStudent = async () => {
@@ -123,12 +124,12 @@ const Dashboard = () => {
   };
 
   const handleEmailRedirect = () => {
-    window.location.href = '/verify-email';
+    navigate('/verify-email');
   };
 
   const handleAssignmentWindowChange = (studentId) => {
     localStorage.setItem('student_id', studentId)
-    window.location.href = '/assignments';
+    navigate('/assignments');
   }
 
   return (

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function RegisterPage(props) {
+    const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -41,7 +43,7 @@ function RegisterPage(props) {
                 if (data.jwt) {
                     localStorage.setItem('jwt', data.jwt);
                     localStorage.setItem('teacher_name', data.teacherUsername);
-                    window.location.href = '/dashboard';
+                    navigate('/dashboard');
                   } else {
                     throw new Error('JWT not present in the response');
                   }
